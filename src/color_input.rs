@@ -13,7 +13,7 @@ pub fn color_input(r: &mut u8, g: &mut u8, b: &mut u8) -> i16
     println! ("Enter rgb color, only RETURN to exit:");
     print! ("r? ");
     io::stdout().flush().unwrap();
-    io::stdin().read_line (&mut input_buffer_r).expect("error reading inpu!");
+    io::stdin().read_line (&mut input_buffer_r).expect("error reading input!");
 
     // check for empty input
     input_len = input_buffer_r.chars().count();
@@ -26,12 +26,12 @@ pub fn color_input(r: &mut u8, g: &mut u8, b: &mut u8) -> i16
 
     print! ("g? ");
     io::stdout().flush().unwrap();
-    io::stdin().read_line (&mut input_buffer_g).expect("error reading inpu!");
+    io::stdin().read_line (&mut input_buffer_g).expect("error reading input!");
     let inp_g: u8 = input_buffer_g.trim().parse::<u8>().unwrap();
 
     print! ("b? ");
     io::stdout().flush().unwrap();
-    io::stdin().read_line (&mut input_buffer_b).expect("error reading inpu!");
+    io::stdin().read_line (&mut input_buffer_b).expect("error reading input!");
     let inp_b: u8 = input_buffer_b.trim().parse::<u8>().unwrap();
 
     *r = inp_r;
