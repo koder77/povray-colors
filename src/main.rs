@@ -1,37 +1,48 @@
 mod color_input;
 use crate::color_input::color_input;
 
+struct ColorRgb
+{
+    r: u8,
+    g: u8,
+    b: u8,
+}
+
+struct ColorPov
+{
+    r: f64,
+    g: f64,
+    b: f64,
+}
+
 fn main() {
     let mut ret;
     let mut run = true;
 
     // colors
-    let mut r:u8 = 0;
-    let mut g:u8 = 0;
-    let mut b:u8 = 0;
-    let mut pov_r:f64;
-    let mut pov_g:f64;
-    let mut pov_b:f64;
+
+    let mut color_rgb = ColorRgb {r: 0, g: 0, b: 0};
+    let mut color_pov = ColorPov {r: 0.0, g: 0.0, b: 0.0};
 
     let conv:f64 = 1.0 / 255.0;
 
     while run == true
     {
-        ret = color_input (&mut r, &mut g, &mut b);
+        ret = color_input (&mut color_rgb.r, &mut color_rgb.g, &mut color_rgb.b);
         if ret == 0
         {
             // calculate POV Ray colors in range of 0.0 to 1.0;
 
-            pov_r = r as f64;
-            pov_r = pov_r * conv;
+            color_pov.r = color_rgb.r as f64;
+            color_pov.r = color_pov.r * conv;
 
-            pov_g = g as f64;
-            pov_g = pov_g * conv;
+            color_pov.g = color_rgb.g as f64;
+            color_pov.g = color_pov.g * conv;
 
-            pov_b = b as f64;
-            pov_b = pov_b * conv;
+            color_pov.b = color_rgb.b as f64;
+            color_pov.b = color_pov.b * conv;
 
-            println! ("color rgb<{:.4}, {:.4}, {:.4}>", pov_r, pov_g, pov_b);
+            println! ("color rgb<{:.4}, {:.4}, {:.4}>", color_pov.r, color_pov.g, color_pov.b);
             println! ()
         }
         else
